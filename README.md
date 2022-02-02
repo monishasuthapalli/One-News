@@ -9,3 +9,5 @@ One news aims to make the world a better place by providing the users with perso
 - Ability to bookmark favorite articles
 - Provide insights to the user by showing them popular sources preferred by the other users
 
+## Site
+https://one-news-app.herokuapp.com/
