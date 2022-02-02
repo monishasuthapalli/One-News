@@ -1,0 +1,41 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/users/home">OneNews</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <% if(locals.user) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/chart">Chart <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/bookmark/bookmarks">Bookmarks <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/users/update">Update</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/preferences/update">Update pref</a>
+            <!-- <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/users/delete">Delete User</a> -->
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/users/sign-out">Sign Out</a>
+          </div>
+        </li>
+        <% }else{ %>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign-in">Sign in <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign-up">Sign Up <span class="sr-only">(current)</span></a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>
+</header>

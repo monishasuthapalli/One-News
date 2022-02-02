@@ -1,0 +1,22 @@
+<div class="form-card">
+    <div class="card" style="width: 20rem;">
+        <div class="card-header text-center">Sign In</div>
+        <div class="card-body">
+            <form action="/users/create-session" id="captcha-form" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" aria-describedby="emailHelp"
+                        placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password"
+                        placeholder="Enter your password" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

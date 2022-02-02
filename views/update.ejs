@@ -1,0 +1,35 @@
+<div class="form-card">
+    <div class="card" style="width: 20rem;">
+        <div class="card-header text-center">Update</div>
+        <div class="card-body">
+            <form action="/users/update-user" id="captcha-form" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" value="<%=locals.user.username%>" id="username" aria-describedby="emailHelp"
+                        placeholder="Enter your username" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="email">Update Email address</label>
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"
+                        placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password-update"
+                        placeholder="Enter your password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" class="form-control" name="confirm_password" id="confirm-password"
+                        placeholder="Enter your password again" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info">Update</button>
+                </div>
+                <div class="text-center delete-button">
+                    <a href="/users/delete" class="btn btn-danger">DELETE ACCOUNT</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

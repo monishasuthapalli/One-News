@@ -1,0 +1,49 @@
+{
+  "name": "one-news",
+  "version": "1.0.0",
+  "description": "One News - Team 1 - CS484",
+  "main": "index.js",
+  "scripts": {
+    "start": "set NODE_ENV=production&& node index.js",
+    "test": "set NODE_ENV=test&& jest",
+    "dev": "set NODE_ENV=development&& nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UIC-CS484/assignment-2---final-project-repository-team1.git"
+  },
+  "author": "Raghu Ram Chepuri, Luke Norris, Angelo Straight",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UIC-CS484/assignment-2---final-project-repository-team1/issues"
+  },
+  "homepage": "https://github.com/UIC-CS484/assignment-2---final-project-repository-team1#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bcrypt": "^5.0.1",
+    "better-express-store": "^1.0.4",
+    "better-sqlite3": "^7.4.3",
+    "collections": "^5.1.12",
+    "config": "^3.3.6",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.2",
+    "heroku": "^7.59.2",
+    "https": "^1.0.0",
+    "jest": "^27.3.1",
+    "node-fetch": "^3.1.0",
+    "nodemon": "^2.0.13",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
+    "password-validator": "^5.2.1",
+    "request": "^2.88.2",
+    "sequelize": "^6.12.0-alpha.1",
+    "sorted-map": "^0.1.8",
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.2",
+    "supertest": "^6.1.6"
+  }
+}

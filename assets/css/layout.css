@@ -1,0 +1,161 @@
+/*removing default margin*/
+body{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    background-color: lightblue;
+}
+
+#body {
+    padding-bottom:5%;   /* Height of the footer */
+ }
+
+img{
+    height: 15rem;
+}
+
+.delete-button{
+    margin-top: 0.5rem;
+}
+
+.password-details{
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+}
+
+.charts{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+.chart-1 .dropdown{
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.chart-1 .dropdown button{
+    margin: auto;
+}
+
+img:hover{
+    opacity: 0.5;
+}
+
+canvas{
+    width: 100%;
+}
+
+.chart-1{
+    width: 45%;
+}
+
+.custom{
+    color: black;
+}
+
+.custom-img{
+    opacity: 0.3;
+}
+/*footer style*/
+footer{
+    height: 5%;
+    position: fixed;
+    bottom: 0px;
+    background-color: red;
+    width: 100%;
+    text-align: center;
+    padding-top: 0.5rem;
+}
+
+/*style for form cards*/
+.form-card{
+    height: 80%;
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/*icon margin*/
+.form-card i{
+    margin-right: 1rem;
+}
+
+.home{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1200px){
+    body{
+        background-color: #20b2aa;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    body{
+        position: relative;
+        background-color: #20b2aa;
+    }
+
+    .card-title{
+        font-size: medium;
+    }
+}
+
+@media screen and (max-width: 668px) {
+    body{
+        background-color: lightblue;
+    }
+
+    .card-title{
+        font-size: larger;
+    }
+
+    .charts{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    canvas{
+        width: 100%;
+    }
+
+    .chart-1{
+        width: 100%;
+    }
+
+    #myChart2{
+        margin-bottom: 5%;
+    }
+
+    img{
+        height: 20rem;
+    }
+
+    .navbar-brand{
+        font-size: medium;
+    }
+
+    .nav-item{
+        font-size: medium;
+    }
+
+    .footer{
+        height: 0rem;
+    }
+
+    .home-card{
+        height: 100vh;
+    }
+}

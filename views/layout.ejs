@@ -1,0 +1,163 @@
+<html>
+
+<head>
+  <title>One News</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="news, aggregator, one news">
+  <meta name="author" content="Raghu Ram Chepuri, Luke Norris, Angelo Straight">
+  <meta name="description" content="News Aggregator">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+  <link rel="stylesheet" href="/css/layout.css">
+  <%- style %>
+</head>
+
+<body>
+  <%- include('_header');%>
+  <%- body %>
+  <%- include('_footer');%>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script>
+    <% if (locals.flash.success && locals.flash.success.length > 0) {%>
+    new Noty({
+      theme: 'relax',
+      text: "<%=locals.flash.success%>",
+      type: 'success',
+      layout: 'topRight',
+      timeout: 800
+    }).show();
+    <% } %>
+    <% if (locals.flash.error && locals.flash.error.length > 0) {%>
+    new Noty({
+      theme: 'relax',
+      text: "<%=locals.flash.error%>",
+      type: 'error',
+      layout: 'topRight',
+      timeout: 800
+    }).show();
+    <% } %>
+    var myChart1 = new Chart("myChart1", {
+      type: "line",
+      data: {
+        labels: "",
+        datasets: [{
+          fill: false,
+          lineTension: 0,
+          backgroundColor: "rgba(0,0,255,1.0)",
+          borderColor: "rgba(0,0,255,0.1)",
+          data: ""
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },title: {
+          display: true,
+          text: ""
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              min: 6,
+              max: 16
+            }
+          }],
+        }
+      }
+    });
+    var myChart2 = new Chart("myChart2", {
+      type: "bar",
+      data: {
+        labels: "",
+        datasets: [{
+          backgroundColor: ["red", "green", "blue", "orange", "brown", "black", "yellow"],
+          data: ""
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: ""
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+    displayChartOne();
+    displayChartTwoOne();
+    $('#password').tooltip({'trigger':'focus', 'title': 'Atleast one A-Z, one a-z, One 0-9. Length: 6-30'});
+    $('#password-update').tooltip({'trigger':'focus', 'title': 'Atleast one A-Z, one a-z, One 0-9. Length: 6-30'});
+    function displayChartOne(){
+      <%if (locals.user!=null && locals.user.weatherData != null) {%>
+      var dates = [];
+      var temperatues = [];
+      <%for (let i in locals.user.weatherData.dates) {%>
+        dates.push('<%=locals.user.weatherData.dates[i]%>')
+      <%}%>
+      <%for (let i in locals.user.weatherData.temperatues) {%>
+        temperatues.push(<%-locals.user.weatherData.temperatues[i] -%>)
+      <%}%>
+      console.log("called Display One");
+      if (myChart1) {
+        myChart1.data.labels = dates;
+        myChart1.data.datasets[0].data = temperatues;
+        myChart1.options.title.text="Temperature Forecast for Today and Tomorrow";
+        myChart1.update();
+      }
+      <%}%>
+    }
+    function displayChartTwoOne() {
+      <%if (locals.user!=null && locals.user.chartData != null) {%>
+      var preferenceSources = [];
+      var preferenceCount = [];
+      <%for (let i in locals.user.chartData.preferenceSources) {%>
+      preferenceSources.push('<%=locals.user.chartData.preferenceSources[i]%>')
+      <%}%>
+      <%for (let i in locals.user.chartData.preferenceCount) {%>
+      preferenceCount.push(<%-locals.user.chartData.preferenceCount[i] -%>)
+      <%}%>
+      console.log("called Display One");
+      if (myChart2) {
+        myChart2.data.labels = preferenceSources.splice(0,5);
+        myChart2.data.datasets[0].data = preferenceCount.splice(0,5);
+        myChart2.options.title.text="Popular sources selected by Users";
+        myChart2.update();
+      }
+      <%}%>
+    }
+
+    function displayChartTwoTwo() {
+      <%if (locals.user!=null && locals.user.chartData != null) {%>
+      var bookMarkSources = [];
+      var bookMarkSourceCount = [];
+      <%for (let i in locals.user.chartData.bookMarkSources) {%>
+      bookMarkSources.push('<%=locals.user.chartData.bookMarkSources[i]%>')
+      <%}%>
+      <%for (let i in locals.user.chartData.bookMarkSourceCount) {%>
+      bookMarkSourceCount.push(<%-locals.user.chartData.bookMarkSourceCount[i] -%>)
+      <%}%>
+      console.log("called Display One");
+      if (myChart2) {
+        myChart2.data.labels = bookMarkSources.splice(0,5);
+        myChart2.data.datasets[0].data = bookMarkSourceCount.splice(0,5);
+        myChart2.options.title.text="Popular sources bookmarked by users";
+        myChart2.update();
+      }
+      <%}%>
+    }
+  </script>
+</body>
+
+</html>

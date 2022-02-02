@@ -1,0 +1,31 @@
+<div class="card-columns">
+  <%if(data!="NoData"){%>
+  <% for(let article in data){%>
+  <div class="card home-card">
+    <a href='<%=data[article].url%>' target="_blank"><img class="card-img-top" src='<%= data[article].urlToImage%>' alt="Card image cap"></a>
+    <div class="card-body text-primary">
+      <h5 class="card-title">
+        <a href='<%=data[article].url%>' target="_blank"><%=data[article].title%></a>
+      </h5>
+      <p class="card-text">
+        <%=data[article].description%>...<a href='<%=data[article].url%>' target="_blank">Read full story</a>
+      </p>
+      <p class="card-text"><small class="text-muted">
+          <%=data[article].source.name%>
+        </small></p>
+      <form class="text-center" action="/bookmark/add-bookmark" method="POST">
+        <input type="hidden" type="text" name="username" value='<%=user.username%>'>
+        <input type="hidden" type="text" name="title" value='<%=data[article].title%>'>
+        <input type="hidden" type="text" name="imageUrl" value='<%= data[article].urlToImage%>'>
+        <input type="hidden" type="text" name="description" value='<%=data[article].description%>'>
+        <input type="hidden" type="text" name="url" value='<%=data[article].url%>'>
+        <input type="hidden" type="text" name="source" value='<%=data[article].source.name%>'>
+        <button type="submit" class="btn btn-info submit-button">Bookmark</button>
+      </form>
+    </div>
+  </div>
+  <%}%>
+  <%} else{%>
+  <h1>There is some issue fetching the news. Please hang on tight or come back again later</h1>
+  <%}%>  
+</div>
